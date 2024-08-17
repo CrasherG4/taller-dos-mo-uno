@@ -6,6 +6,7 @@ import { CommonActions, useNavigation } from '@react-navigation/native'
 import { InputComponents } from '../Components/InputComponents'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { COLOR_DARK_VIOLET_MENUS, COLOR_VIOLET, COLOR_WHITE_MENU } from '../Common/ConstantsColor'
+import { User } from '../Navigator/StackNavigator'
 
 // interfaz
 interface FormLogin{
@@ -14,21 +15,13 @@ interface FormLogin{
 }
 
 // interface - vector objetos
-interface User{
-  id: number;
-  email: string;
-  password: string;
+interface Props{
+  users: User[];
 }
 
-export const Login = () => {
+export const Login = ({ users }: Props) => {
 
   const { height } = useWindowDimensions();  
-
-  // arreglo de usuarios: permitir inicio de sesión
-  const users: User[] = [
-    {id: 1, email: 'carmen@gmail.com', password: '123456'},
-    {id: 2, email: 'crashi@gmail.com', password: '987654'},
-  ]
 
   // Hook useState: manipular el estado del formulario
   const [formLogin, setFormLogin] = useState<FormLogin>({
@@ -87,7 +80,9 @@ export const Login = () => {
     )
     const foundUser = users.find(user => user.email === formLogin.email);
     console.log(foundUser);
-
+   
+    //Permitir la navegación al usuario si ha ingresado los datos correctamente
+    navigation.dispatch(CommonActions.navigate({ name: 'Inicio' }))
   }
 
   //función para mostrar la contraseña del usuario

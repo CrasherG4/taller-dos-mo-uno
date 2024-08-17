@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import React, { useState } from 'react'
-import { Text, useWindowDimensions, View } from 'react-native'
+import { Alert, Text, useWindowDimensions, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { CommonActions, useNavigation } from '@react-navigation/native'
 import { styles } from '../Theme/appTheme'
@@ -8,6 +8,12 @@ import { InputComponents } from '../Components/InputComponents'
 import { COLOR_VIOLET, COLOR_WHITE_MENU } from '../Common/ConstantsColor'
 import { MusicaComponets } from '../Components/MusicaComponents'
 import { IMAGEN_ALBUM_GIDLE_INEVERDIE, IMAGEN_PLAYLIST_MAMAMOO_UNO, IMAGEN_SONG_GIDLE_NXDE } from '../Common/ImgConstants'
+import { User } from '../Navigator/StackNavigator'
+
+interface Props{
+  users: User[];
+  handleAddUser: (user: User) => void;
+}
 
 // interface - formulario Registro
 interface FormRegister {
@@ -19,7 +25,7 @@ interface FormRegister {
 }
 
 
-export const Registro = () => {
+export const Registro = ({ users, handleAddUser }: Props) => {
 
     // hook useState: Manipular el estado del formulario
     const [formRegister, setFormRegister] = useState<FormRegister>({
@@ -57,9 +63,51 @@ export const Registro = () => {
   
     // función que permita registrar usuario
     const handleSignInUp = () => {
+      if (!formRegister.nombre || !formRegister.apellido || !formRegister.usuario || !formRegister.email || !formRegister.password) {
+        Alert.alert(
+          "Campos incompletos",
+          "Por favor, completa todos los campos anteriores."
+        )
+        return;
+      }
+
+      //Comprobar que no exista el usuario
+      if (verifyUser() != null) {
+        Alert.alert(
+          "El usuario ya existe",
+          "El correo que ha ingresado ya está registrado"
+        )
+        return;
+      }
+
+      //General el nuevo usuario
+      const getIdUsers = users.map(user => user.id);
+      const getNewId = Math.max(...getIdUsers) + 1;
+      const newUser: User =  {
+        id: getNewId,
+        nombre: formRegister.nombre,
+        apellido: formRegister.apellido,
+        usuario: formRegister.usuario,
+        email: formRegister.email,
+        password: formRegister.password
+      }
+
+      handleAddUser(newUser);
+
+      Alert.alert(
+        "Proceso completado",
+        "Tu registro se ha ejecutado de forma exitosa"
+      ),
+      navigation.goBack();
+
       console.log(formRegister);
     }
-  
+
+  // función para verificar coincidencias en el user
+  const verifyUser = (): User => {
+    const existUser = users.filter (user => user.email === formRegister.email)[0]
+    return existUser; //User | null
+  }
 
   return (
     <View style={styles.contenedorAll}>

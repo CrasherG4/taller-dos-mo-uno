@@ -121,16 +121,17 @@ export const styles = StyleSheet.create({
     height: 100,
     borderRadius: 6,
     flexDirection: 'row',
-    gap: 6
+    gap: 6,
+    alignItems: 'center'
   },
   imgAlMu: {
-    width: '25%',
-    height: '100%',
+    width: '20%',
+    height: '90%',
     borderRadius: 6,
   },
   contextAlMu: {
     width: '60%',
-    height: '50%',
+    height: '100%',
     flexDirection: 'column'
   },
   textAlMuT: {
@@ -151,9 +152,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   iconAlMu: {
-    width: '100%',
-    height: '100%',
-    alignSelf: 'center'
+    
   },
   textList: {
     color: COLOR_WHITE,
@@ -171,4 +170,145 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 6,
   },
+  //Diseños de la card
+  contentCard: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  contenedorPrincipalModal: {
+    flex: 1, 
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.3)',
+  },
+  contenedorModalInfo: {
+    backgroundColor: COLOR_DARK_VIOLET,
+    borderRadius: 8,
+    padding: 20,
+    gap: 20
+  },
+  textModal: {
+    color: COLOR_WHITE,
+    fontSize: 24,
+    fontWeight: '600'
+  },
+  textModalDos: {
+    color: COLOR_WHITE,
+    fontSize: 18,
+    fontWeight: '500',
+    alignSelf: 'center'
+  },
+  contTextExit: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  iconExitModal: {
+    position: 'absolute',
+    right: 0
+  },
+  viewImgModal: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  imgModal: {
+    width: 150,
+    height: 150,
+    borderRadius: 8
+  },
+  descModal: {
+    color: COLOR_WHITE,
+    fontSize: 18,
+    textAlign: 'justify'
+  },
+  contadorModal: {
+    flexDirection: 'row',
+    width: '60%',
+    alignSelf: 'center',
+    gap: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLOR_DARK_VIOLET_MENUS,
+    borderRadius: 6,
+    marginBottom: 10,
+  },
+  buttonContadorModal: {
+    width: 50,
+    backgroundColor: COLOR_WHITE,
+    borderRadius: 8,
+    padding: 2,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  textButtonContadorModal: {
+    fontSize: 30,
+    fontWeight: '600',
+  },
+  buttonAddModal: {
+    width: '90%',
+    marginTop: 10,
+    padding: 10,
+    alignSelf: 'center',
+    backgroundColor: COLOR_VIOLET,
+    borderRadius: 8
+  },
+  navInicio: {
+    width: '80%',
+    height: 80,
+    alignSelf: 'center',
+    backgroundColor: COLOR_DARK_VIOLET_MENUS,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 0,
+    gap: 120,
+    borderTopRightRadius: 8,
+    borderTopLeftRadius: 8,
+  },
+  headerTable: {
+    flexDirection: 'row',
+  },
+  listModal: {
+    flexDirection: 'row',
+    gap: 4,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  textListModal: {
+    color: COLOR_WHITE,
+    marginRight: 50
+  },
+  textIconCar: {
+    zIndex: 1,
+    width: 24,
+    height:22,
+    backgroundColor: COLOR_WHITE_MENU,
+    color: COLOR_DARK_VIOLET_MENUS,
+    fontSize: 16,
+    fontWeight: '900',
+    textAlign: 'center',
+    borderRadius: 20,
+    position: 'absolute',
+    right: 0,
+    bottom: 0
+  },
+  contImgProductHome: {
+    marginTop: 10,
+    padding: 10,
+    borderColor: COLOR_DARK_VIOLET_MENUS,
+    borderWidth: 2,
+    borderRadius: 8,
+  },
+  imgProductsHome: {
+    width: '100%',
+    height: 100,
+    alignSelf: 'center',
+    borderRadius: 6,
+  },
+  flatListInicio: {
+    height: '60%'
+  }
 })
